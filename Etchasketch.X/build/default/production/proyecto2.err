@@ -1,0 +1,35 @@
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 44 : Found label after column 1. (ISR_VECT)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 76 : Found label after column 1. (RUT_TMR0)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 85 : Found label after column 1. (RUT_ADC)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 89 : Found label after column 1. (VAL_X)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 100 : Found label after column 1. (VAL_Y)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 112 : Found label after column 1. (RUT_SEND)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 118 : Found label after column 1. (RUT_RECIEVE)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 123 : Found label after column 1. (RECIBIRX)
+Message[305] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 126 : Using default destination of 1 (file).
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 128 : Found label after column 1. (RECIBIRY)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 135 : Found label after column 1. (TABLA)
+Message[305] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 189 : Using default destination of 1 (file).
+Message[305] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 194 : Using default destination of 1 (file).
+Message[305] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 199 : Using default destination of 1 (file).
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 291 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 292 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 293 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 294 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 295 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 300 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 301 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 302 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 318 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 327 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 332 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 341 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 342 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 343 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 346 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 350 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 351 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 362 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 364 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 375 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\FRANC\DOCUMENTS\GITHUB\ETCH\ETCHASKETCH.X\PROYECTO2.ASM 411 : Found opcode in column 1. (RETURN)

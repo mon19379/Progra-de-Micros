@@ -60,18 +60,18 @@ POP:
 ;******************************************************************************
     RUT_TMR0:
          MOVLW   .248
-	 MOVWF   TMR0	     ;SE CARGA UN VALOR AL TIMER0 PARA QUE EL TIEMPO SEA DE 2ms
+	 MOVWF   TMR0	     
 	 BCF	 INTCON, T0IF 
         
    
     
     MAPEO:
 	 RRF     SERV1, W
-	 ANDLW   b'011111111'
+	 ANDLW   b'01111111'
 	 ADDLW   .32
 	 MOVWF   CCPR1L
 	 RRF     SERV2, W
-	 ANDLW   b'011111111'
+	 ANDLW   b'01111111'
 	 ADDLW   .32
 	 MOVWF   CCPR2L
     RETURN
@@ -83,8 +83,10 @@ POP:
 	
     SERVO1:
 	BANKSEL ADCON0
-	BSF     ADCON0, CHS0
-	BCF     ADCON0, CHS1
+	BSF     ADCON0, 2
+	BCF     ADCON0, 3
+	BCF     ADCON0, 4
+	BCF     ADCON0, 5
 	MOVFW	ADRESH 
 	MOVWF   SERV1
 	BCF     PIR1, ADIF
@@ -94,11 +96,12 @@ POP:
     
     SERVO2:
 	BANKSEL ADCON0
-	BCF     ADCON0, CHS1
-	BCF     ADCON0, CHS0
+	BCF     ADCON0, 2
+	BCF     ADCON0, 3
+	BCF     ADCON0, 4
+	BCF     ADCON0, 5
 	MOVFW	ADRESH 
 	MOVWF   SERV2
-	
 	BCF     PIR1, ADIF
 	BSF	ADCON0, 1
 	BCF     FLAGS, 0
@@ -141,7 +144,6 @@ CONFIG_IO:
    
     BSF	    TRISA, 0
     BSF     TRISA, 1
-    BSF     TRISA, 2
     CLRF    TRISB ;TODOS LOS BITS DEL PUERTO C Y D EN 0, SALIDAS
     CLRF    TRISC
     CLRF    TRISD    
@@ -150,7 +152,6 @@ CONFIG_IO:
     
     BSF	    ANSEL, 0 ;BIT 0 ENTRADA ANALÓGICA, LAS DEMAS DIGITALES
     BSF     ANSEL, 1
-    BSF     ANSEL, 2
     CLRF    ANSELH ;ENTRADAS DIGITALES
     
     BCF	    STATUS, 5
@@ -159,8 +160,14 @@ CONFIG_IO:
     CLRF   PORTC
     CLRF   PORTB
     CLRF   PORTD
-    CLRF   PORTA
     RETURN
+    
+    
+ CONFIG_VAR:
+    BANKSEL PORTA
+    CLRF   SERV1
+    CLRF   SERV2
+    CLRF   FLAGS
     
     
 CONFIG_ADC:
@@ -216,6 +223,7 @@ CONFIG_TMR0:
     BSF	    STATUS, 5
     BCF	    STATUS, 6 ;BANCO 1
     
+    
     MOVLW   b'10000111'  ;SE APAGAN LAS PULLUPS Y SE LE PONE PRESCALER DE 1:256
     MOVWF   OPTION_REG   
    
@@ -232,6 +240,7 @@ CONFIG_INT:
     BCF	    STATUS, 6; BANCO 0
     BSF	    INTCON, GIE
     BSF     INTCON, PEIE
+    BSF     INTCON, T0IE
     BCF     PIR1, TMR2IF
     RETURN
     

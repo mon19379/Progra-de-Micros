@@ -13,6 +13,7 @@
 PR_VAR        UDATA
 SERV1	      RES 1
 SERV2	      RES 1
+SERV3	      RES 1
 FLAGS	      RES 1
 W_TEMP	      RES 1 
 STATUS_TEMP   RES 1
@@ -38,8 +39,10 @@ PUSH:
     
     
 ISR:
-    BTFSC   INTCON, T0IF                  
-    CALL    RUT_TMR0 
+;    BTFSC   INTCON, T0IF                  
+;    CALL    RUT_TMR0 
+    BTFSC   PIR1, TMR1IF    ;SE REVISA LA BANDERA DE INTERRUPCION
+    CALL    RUT_TMR1	    ; SI NO ESTA EN CERO LLAMA LA RUTINA
     BTFSC   PIR1, ADIF
     CALL    RUT_ADC
   
@@ -58,14 +61,22 @@ POP:
 ;******************************************************************************
 ; SUBRUTINAS INT
 ;******************************************************************************
-    RUT_TMR0:
-         MOVLW   .248
-	 MOVWF   TMR0	     
-	 BCF	 INTCON, T0IF 
-        
+;    RUT_TMR0:
+;         MOVLW   .248
+;	 MOVWF   TMR0	     
+;	 BCF	 INTCON, T0IF 
+;    RETURN
    
+    RUT_TMR1: 
     
-    MAPEO:
+	MOVLW   .248	    ;SE CARGAN VALORES AL TIMER1 PARA QUE EL TIEMPO SEA DE 500ms
+	MOVWF   TMR1H
+	MOVLW   .47	    
+	MOVWF   TMR1L           
+	BCF	PIR1, TMR1IF    ;SE REINICIAN LAS CONDICIONES INICIALES DEL TIMER
+	
+	
+	MAPEO:
 	 RRF     SERV1, W
 	 ANDLW   b'01111111'
 	 ADDLW   .32
@@ -74,12 +85,14 @@ POP:
 	 ANDLW   b'01111111'
 	 ADDLW   .32
 	 MOVWF   CCPR2L
-    RETURN
-   
+	 RETURN
+
+    
+	
 
     RUT_ADC:
-	BTFSC	 FLAGS, 0
-	GOTO	 SERVO2
+	BTFSC   FLAGS, 0
+	GOTO    SERVO2
 	
     SERVO1:
 	BANKSEL ADCON0
@@ -107,6 +120,7 @@ POP:
 	BCF     FLAGS, 0
      RETURN
 	
+    
      
      
 
@@ -119,12 +133,14 @@ START
  CALL CONFIG_IO
  CALL CONFIG_ADC
  CALL CONFIG_TMR2
+ CALL CONFIG_TMR1
  CALL CONFIG_INT
  CALL CONFIG_CCP1
  CALL CONFIG_CCP2
  CALL CONFIG_TMR0
-
+ 
 LOOP:
+    
     
     GOTO LOOP	  
     
@@ -144,6 +160,7 @@ CONFIG_IO:
    
     BSF	    TRISA, 0
     BSF     TRISA, 1
+    BSF     TRISA, 2
     CLRF    TRISB ;TODOS LOS BITS DEL PUERTO C Y D EN 0, SALIDAS
     CLRF    TRISC
     CLRF    TRISD    
@@ -152,6 +169,7 @@ CONFIG_IO:
     
     BSF	    ANSEL, 0 ;BIT 0 ENTRADA ANALÓGICA, LAS DEMAS DIGITALES
     BSF     ANSEL, 1
+    BSF     ANSEL, 2
     CLRF    ANSELH ;ENTRADAS DIGITALES
     
     BCF	    STATUS, 5
@@ -232,6 +250,51 @@ CONFIG_TMR0:
     BCF INTCON, T0IF    ;CONFIGURACIÓN DEL OVERFLOW INTERUPT FLAG
     
     RETURN
+    
+    
+CONFIG_TMR1:
+    BCF	    STATUS, 5
+    BCF	    STATUS, 6; BANCO 0
+    
+    CLRF    T1CON
+    BCF	    T1CON, T1CKPS1
+    BCF	    T1CON, T1CKPS0  ;PRESCALER DE 1:8
+    BSF	    T1CON, TMR1ON  ;TIMER 1 ENCENDIDO
+    BCF	    PIR1, TMR1IF   ;SE APAGA LA BANDERA DE INTERRUPCION
+    
+    RETURN
+    
+    
+CONFIG_TX:
+    BSF	    STATUS, 5
+    BCF	    STATUS, 6 ;BANCO 1
+    
+    ;BSF     PIE1, TXIE
+    BCF     TXSTA, SYNC
+    BSF     TXSTA, BRGH
+    BSF     TXSTA, TXEN
+    
+    BANKSEL  BAUDCTL
+    BCF	     BAUDCTL, BRG16
+    
+    BANKSEL  SPBRG
+    MOVLW    .25
+    MOVWF    SPBRG
+    CLRF     SPBRGH  ;BAUD
+    RETURN
+    
+    
+CONFIG_RX:
+    BCF	    STATUS, 5
+    BCF	    STATUS, 6; BANCO 0
+    
+    BSF     RCSTA, SPEN
+    BCF     RCSTA, RX9
+    BSF     RCSTA, CREN
+    BANKSEL PIE1
+    BSF	    PIE1, RCIE
+    RETURN
+    
     
     
         

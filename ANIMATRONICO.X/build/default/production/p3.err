@@ -1,30 +1,33 @@
-Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 32 : Found label after column 1. (ISR_VECT)
-Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 70 : Found label after column 1. (RUT_TMR1)
-Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 79 : Found label after column 1. (MAPEO)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 37 : Found label after column 1. (ISR_VECT)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 73 : Found label after column 1. (RUT_TMR1)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 82 : Found label after column 1. (MAPEO)
 Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 93 : Found label after column 1. (RUT_ADC)
 Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 97 : Found label after column 1. (SERVO1)
-Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 110 : Found label after column 1. (SERVO2)
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 161 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 162 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 106 : Found label after column 1. (SERVO2)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 115 : Found label after column 1. (RUT_RECIEVE)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 136 : Found label after column 1. (LOOP)
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 149 : Found label after column 1. (CONFIG_IO)
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 154 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 155 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 156 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 157 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 158 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 163 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 164 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 165 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 166 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 170 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 171 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 172 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 173 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 184 : Found label after column 1. (CONFIG_VAR)
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 194 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 199 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 212 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 214 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 238 : Found opcode in column 1. (RETURN)
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 246 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 273 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 274 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 181 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 182 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 197 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 231 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 253 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 263 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 268 : Found label after column 1. (CONFIG_TX)
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 270 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 271 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 272 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 275 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 278 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 282 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 283 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 295 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 279 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 280 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 281 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 283 : Found opcode in column 1. (RETURN)
+Warning[203] C:\USERS\FRANC\DOCUMENTS\GITHUB\PROGRA-DE-MICROS\ANIMATRONICO.X\P3.ASM 290 : Found opcode in column 1. (RETURN)

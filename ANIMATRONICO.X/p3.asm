@@ -11,12 +11,17 @@
 ;VARIABLES
 ;*******************************************************************************    
 PR_VAR        UDATA
+SERV	      RES 1
 SERV1	      RES 1
 SERV2	      RES 1
 SERV3	      RES 1
 FLAGS	      RES 1
 W_TEMP	      RES 1 
 STATUS_TEMP   RES 1
+BOCA_1	      RES 1
+BOCA_2	      RES 1
+SWITCH	      RES 1
+	
 	      
 	      
 	
@@ -39,12 +44,16 @@ PUSH:
     
     
 ISR:
-;    BTFSC   INTCON, T0IF                  
-;    CALL    RUT_TMR0 
-    BTFSC   PIR1, TMR1IF    ;SE REVISA LA BANDERA DE INTERRUPCION
-    CALL    RUT_TMR1	    ; SI NO ESTA EN CERO LLAMA LA RUTINA
     BTFSC   PIR1, ADIF
     CALL    RUT_ADC
+;   BTFSC   INTCON, T0IF                  
+;   CALL    RUT_TMR0 
+    BTFSC   PIR1, TMR1IF    ;SE REVISA LA BANDERA DE INTERRUPCION
+    CALL    RUT_TMR1	    ; SI NO ESTA EN CERO LLAMA LA RUTINA
+    BTFSC   PIR1, RCIF
+    CALL    RUT_RECIEVE
+   
+    
   
     
    
@@ -61,15 +70,9 @@ POP:
 ;******************************************************************************
 ; SUBRUTINAS INT
 ;******************************************************************************
-;    RUT_TMR0:
-;         MOVLW   .248
-;	 MOVWF   TMR0	     
-;	 BCF	 INTCON, T0IF 
-;    RETURN
-   
-    RUT_TMR1: 
+  RUT_TMR1: 
     
-	MOVLW   .248	    ;SE CARGAN VALORES AL TIMER1 PARA QUE EL TIEMPO SEA DE 500ms
+	MOVLW   .248	    
 	MOVWF   TMR1H
 	MOVLW   .47	    
 	MOVWF   TMR1L           
@@ -85,21 +88,14 @@ POP:
 	 ANDLW   b'01111111'
 	 ADDLW   .32
 	 MOVWF   CCPR2L
+	 
 	 RETURN
-
-    
-	
-
-    RUT_ADC:
+  RUT_ADC:
 	BTFSC   FLAGS, 0
 	GOTO    SERVO2
 	
     SERVO1:
-	BANKSEL ADCON0
 	BSF     ADCON0, 2
-	BCF     ADCON0, 3
-	BCF     ADCON0, 4
-	BCF     ADCON0, 5
 	MOVFW	ADRESH 
 	MOVWF   SERV1
 	BCF     PIR1, ADIF
@@ -108,23 +104,19 @@ POP:
      RETURN
     
     SERVO2:
-	BANKSEL ADCON0
 	BCF     ADCON0, 2
-	BCF     ADCON0, 3
-	BCF     ADCON0, 4
-	BCF     ADCON0, 5
 	MOVFW	ADRESH 
 	MOVWF   SERV2
 	BCF     PIR1, ADIF
 	BSF	ADCON0, 1
 	BCF     FLAGS, 0
      RETURN
-	
-    
-     
-     
-
-;******************************************************************************
+  
+     RUT_RECIEVE:
+	MOVFW   RCREG
+	MOVWF   PORTB
+	RETURN 
+ ;******************************************************************************
 ;PRINCIPAL
 ;*******************************************************************************
 MAIN_PROG CODE      0x0100             ; let linker place main program
@@ -138,111 +130,70 @@ START
  CALL CONFIG_CCP1
  CALL CONFIG_CCP2
  CALL CONFIG_TMR0
+ CALL CONFIG_RX
+ CALL  CONFIG_TX
  
-LOOP:
-    
-    
-    GOTO LOOP	  
-    
-    
+ LOOP:
+    GOTO LOOP
 
 
+
+    
+    
+    
   
-    
+  
 ;*******************************************************************************
 ; CONFIGURACIONES
 ;*******************************************************************************
-
-CONFIG_IO:
+ CONFIG_IO:
     BSF	    STATUS, 5 
     BCF	    STATUS, 6 ; BANCO 1 
    
    
-    BSF	    TRISA, 0
+    BSF     TRISA, 0 
     BSF     TRISA, 1
-    BSF     TRISA, 2
     CLRF    TRISB ;TODOS LOS BITS DEL PUERTO C Y D EN 0, SALIDAS
     CLRF    TRISC
-    CLRF    TRISD    
+    CLRF    TRISD
+    
     BSF	    STATUS, 5
     BSF	    STATUS, 6 ;BANCO 3
-    
-    BSF	    ANSEL, 0 ;BIT 0 ENTRADA ANALÓGICA, LAS DEMAS DIGITALES
+  
+    BSF     ANSEL, 0
     BSF     ANSEL, 1
-    BSF     ANSEL, 2
     CLRF    ANSELH ;ENTRADAS DIGITALES
     
     BCF	    STATUS, 5
     BCF	    STATUS, 6; BANCO 0
     
-    CLRF   PORTC
-    CLRF   PORTB
-    CLRF   PORTD
+  
+    CLRF    PORTB
+    CLRF    PORTC ;SE PONENN EN CERO TODOS LOS BITS DEL PUERTO B Y C
+    CLRF    PORTD
     RETURN
     
     
- CONFIG_VAR:
-    BANKSEL PORTA
-    CLRF   SERV1
-    CLRF   SERV2
-    CLRF   FLAGS
-    
-    
 CONFIG_ADC:
+    
     BSF	    STATUS, 5
     BCF	    STATUS, 6 ;BANCO 1
     CLRF    ADCON1
+    BSF     PIE1, ADIE
+    
     BCF	    STATUS, 5
     BCF	    STATUS, 6; BANCO 0
     MOVLW   b'01000011'
     MOVWF   ADCON0
-    BSF     PIE1, ADIE
     BSF     PIR1, ADIF
     RETURN
-
-    
-CONFIG_TMR2:
-    BCF	    STATUS, 5
-    BCF	    STATUS, 6; BANCO 0
-   
-    MOVLW   B'00000111'
-    MOVWF   T2CON
-    BSF	    STATUS, 5 
-    BCF	    STATUS, 6 ; BANCO 1 
-    BSF     PIE1, TMR2IE
-    MOVLW   .187    
-    MOVWF   PR2
-    RETURN
-    
-CONFIG_CCP1:
-    
-    BANKSEL CCP1CON
-    BCF	    CCP1CON,   7
-    BCF	    CCP1CON,   6
-    BCF	    CCP1CON,   5
-    BCF	    CCP1CON,   4
-    BSF	    CCP1CON,   3
-    BSF	    CCP1CON,   2
-    BCF	    CCP1CON,   1
-    BCF	    CCP1CON,   0
- RETURN
-    
-CONFIG_CCP2:
-    BANKSEL CCP2CON
-    BCF	    CCP2CON,   5
-    BCF     CCP2CON,   4
-    BSF	    CCP2CON,   3
-    BSF	    CCP2CON,   2
-    BSF     CCP2CON,   1
-    BSF     CCP2CON,   0
-RETURN
     
 CONFIG_TMR0:
     BSF	    STATUS, 5
     BCF	    STATUS, 6 ;BANCO 1
     
     
-    MOVLW   b'10000111'  ;SE APAGAN LAS PULLUPS Y SE LE PONE PRESCALER DE 1:256
+    MOVLW   b'01010111'  ;SE APAGAN LAS PULLUPS Y SE LE PONE PRESCALER DE 1:256
     MOVWF   OPTION_REG   
    
     BCF     STATUS, 5 
@@ -255,56 +206,90 @@ CONFIG_TMR0:
 CONFIG_TMR1:
     BCF	    STATUS, 5
     BCF	    STATUS, 6; BANCO 0
-    
-    CLRF    T1CON
+   
     BCF	    T1CON, T1CKPS1
     BCF	    T1CON, T1CKPS0  ;PRESCALER DE 1:8
     BSF	    T1CON, TMR1ON  ;TIMER 1 ENCENDIDO
+    BSF	    STATUS, 5
+    BCF	    STATUS, 6 ;BANCO 1
+    BSF     PIR1, TMR1IE
     BCF	    PIR1, TMR1IF   ;SE APAGA LA BANDERA DE INTERRUPCION
     
     RETURN
     
     
-CONFIG_TX:
-    BSF	    STATUS, 5
-    BCF	    STATUS, 6 ;BANCO 1
-    
-    ;BSF     PIE1, TXIE
-    BCF     TXSTA, SYNC
-    BSF     TXSTA, BRGH
-    BSF     TXSTA, TXEN
-    
-    BANKSEL  BAUDCTL
-    BCF	     BAUDCTL, BRG16
-    
-    BANKSEL  SPBRG
-    MOVLW    .25
-    MOVWF    SPBRG
-    CLRF     SPBRGH  ;BAUD
-    RETURN
-    
-    
-CONFIG_RX:
+CONFIG_TMR2:
     BCF	    STATUS, 5
     BCF	    STATUS, 6; BANCO 0
+   
+    MOVLW   B'11111111'
+    MOVWF   T2CON
+    BSF	    STATUS, 5 
+    BCF	    STATUS, 6 ; BANCO 1 
     
-    BSF     RCSTA, SPEN
-    BCF     RCSTA, RX9
-    BSF     RCSTA, CREN
-    BANKSEL PIE1
-    BSF	    PIE1, RCIE
+    MOVLW   .187    
+    MOVWF   PR2
     RETURN
     
+CONFIG_CCP1:
+    BANKSEL CCP1CON
+    BCF	    CCP1CON, 7
+    BCF	    CCP1CON, 6		
+    BCF	    CCP1CON, 5		
+    BCF	    CCP1CON, 4		
+    BSF	    CCP1CON, 3
+    BSF	    CCP1CON, 2
+    BCF	    CCP1CON, 1
+    BCF	    CCP1CON, 0
     
+CONFIG_CCP2:
+    BANKSEL CCP2CON
+    BCF	    CCP2CON, 5		
+    BCF	    CCP2CON, 4		
+    BSF	    CCP2CON, 3
+    BSF	    CCP2CON, 2
+    BSF	    CCP2CON, 1
+    BSF	    CCP2CON, 0
+RETURN     
     
-        
 CONFIG_INT:
     BCF	    STATUS, 5
     BCF	    STATUS, 6; BANCO 0
     BSF	    INTCON, GIE
     BSF     INTCON, PEIE
     BSF     INTCON, T0IE
-    BCF     PIR1, TMR2IF
+    BSF	    STATUS, 5 
+    BCF	    STATUS, 6 ; BANCO 1 
+    BSF	    PIE1, RCIE		
+
+    
     RETURN
+   
+ CONFIG_TX:
+    BANKSEL TRISA
+    BCF	    TXSTA, TX9    
+    BCF	    TXSTA, SYNC	    ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+    BSF	    TXSTA, BRGH	    ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+
+    BANKSEL ANSEL
+    BCF	    BAUDCTL, BRG16  ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+    
+    BANKSEL TRISA
+    MOVLW   .25
+    MOVWF   SPBRG	    ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+    CLRF    SPBRGH	    ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+    BSF	    TXSTA, TXEN    
+    BANKSEL PORTA
+RETURN
+    
+CONFIG_RX:
+    BANKSEL PORTA
+    BSF	    RCSTA, SPEN
+    BCF	    RCSTA, RX9
+    BSF	    RCSTA, CREN
+RETURN
+    
+    
+
     
     END
